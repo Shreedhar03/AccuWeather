@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&family=DM+Sans&family=Fira+Code&family=Marvel:wght@400;700&family=Montserrat&family=Noto+Serif&family=Open+Sans&family=Plus+Jakarta+Sans&family=Poppins&family=Sacramento&family=Sora&family=sora&display=swap');
+
+* {
+    font-family: 'open sans';
+    color: #e2e0e0;
+    margin: 0;
+    padding: 0;
+}
+
+.sora {
+    font-family: 'sora';
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.bgcolor {
+    background-color: white;
+}
+
+body {
+    background-color: rgb(0, 4, 32);
+    background: url('./pexels-luiz-carlos-reis-e-silva-4054951.jpg') no-repeat;
+    background-size: cover;
+    /* height: 100vh; */
+    background-attachment: fixed;
+    background-position:bottom;
+}
+
+.logo {
+    font-family: 'Sacramento', cursive;
+}
+
+input[type=text],
+.items,
+.day-7 {
+    background-color: #49440770;
+    color: #e2e0e0;
+    backdrop-filter: blur(20px);
+}
+
+.overview,
+#mode {
+    transition: all 0.5s ease;
+}
+
+@media screen and (max-width:600px) {
+
+    html {
+        font-size: 90%;
+    }
+
+    .hide {
+        display: none !important;
+    }
+}
+
+.load {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loaders {
+    animation: load 1s alternate-reverse infinite;
+}
+
+@keyframes load {
+    100% {
+        opacity: 0;
+    }
+}
+
+.delay {
+    animation-delay: 1s;
+}
+
+.wait {
+    opacity: 0;
+}
+
+.circle {
+    /* border-top: 5px solid rgb(12, 132, 238);
+            border-left: 5px solid rgb(12, 132, 238);
+            border-right: 5px solid rgb(12, 132, 238); */
+    /* border-bottom: 5px solid rgb(0, 4, 32); */
+    position: relative;
+    /* transform: rotate(-45deg); */
+}
+
+.circle::after {
+    content: 'AQI';
+    position: absolute;
+    top: 80%;
+    font-size: 28px;
+    /* text-shadow: 0px 0px 10px red; */
+}
+
+.rating {
+    /* color: rgb(102, 238, 12); */
+    font-weight: 700;
+}
+
+.items,
+.day-7 {
+    /* box-shadow: 10px 10px 1px 0.1px rgb(151, 151, 151); */
+    position: relative;
+}
+
+/* .items::after,
+.day-7::after {
+    position: absolute;
+    width: 90%;
+    height: 110%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: '';
+    background-color: rgba(2, 116, 91, 0.059);
+    z-index: -1;
+    border-radius: 10px;
+}
+
+.day-7::after {
+    width: 104%;
+    height: 95%;
+} */

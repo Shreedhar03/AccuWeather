@@ -9,136 +9,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- <link rel="icon" href="https://img.freepik.com/free-icon/sun-hidden-by-clouds_318-83627.jpg?size=338&ext=jpg&ga=GA1.1.397493846.1668271889&semt=ais" type="image/icon type"> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
-
-        * {
-            font-family: 'Sora';
-            /* color: white; */
-            margin: 0;
-            padding: 0;
-        }
-
-        .ubuntu {
-            font-family: 'Ubuntu';
-        }
-
-        ::-webkit-scrollbar {
-            display: none;
-        }
-
-        .bgcolor {
-            background-color: white;
-        }
-
-        body {
-            background-color: rgb(0, 4, 32);
-        }
-
-        .logo {
-            font-family: 'Sacramento', cursive;
-        }
-
-        input[type=text],
-        .items,
-        .day-7 {
-            background-color: rgb(18, 27, 84);
-            color: white;
-        }
-
-        .overview,
-        #mode {
-            transition: all 0.5s ease;
-        }
-
-        @media screen and (max-width:600px) {
-
-            html {
-                font-size: 90%;
-            }
-
-            .hide {
-                display: none !important;
-            }
-        }
-
-        .load {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .loaders {
-            animation: load 1s alternate-reverse infinite;
-        }
-
-        @keyframes load {
-            100% {
-                opacity: 0;
-            }
-        }
-
-        .delay {
-            animation-delay: 1s;
-        }
-
-        .wait {
-            opacity: 0;
-        }
-
-        .circle {
-            /* border-top: 5px solid rgb(12, 132, 238);
-            border-left: 5px solid rgb(12, 132, 238);
-            border-right: 5px solid rgb(12, 132, 238); */
-            /* border-bottom: 5px solid rgb(0, 4, 32); */
-            position: relative;
-            /* transform: rotate(-45deg); */
-        }
-
-        .circle::after {
-            content: 'AQI';
-            position: absolute;
-            top: 80%;
-            font-size: 28px;
-            /* text-shadow: 0px 0px 10px red; */
-        }
-
-        .rating {
-            /* color: rgb(102, 238, 12); */
-            font-weight: 700;
-        }
-        .items,.day-7{
-            /* box-shadow: 10px 10px 1px 0.1px rgb(151, 151, 151); */
-            position: relative;
-        }
-        .items::after,.day-7::after{
-            position: absolute;
-            width: 90%;
-            height: 110%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            content: '';
-            background-color: rgb(1, 142, 155);
-            z-index: -1;
-            border-radius: 10px;
-        }
-        .day-7::after{
-            width: 104%;
-            height: 95%;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="text-white" onload="loader()">
 
     <div class="load flex gap-5 flex-col items-center justify-center">
-        <!-- <p class="text-2xl">Loading...</p> -->
+        <!-- <p class="text-2xl">Loading...</p>  -->
         <div class="flex gap-2">
             <div class="bg-blue-500 w-[25px] h-[25px] rounded-full loaders"></div>
             <div class="bg-blue-500 w-[25px] h-[25px] rounded-full loaders delay"></div>
@@ -146,30 +23,29 @@
         </div>
     </div>
 
-    <div class="wait nav flex-col xl:flex-row flex m-10 gap-12 items-center">
+    <nav class="wait nav flex-col xl:flex-row flex m-10 gap-12 items-center">
 
         <h1 class="text-5xl xl:text-3xl logo">AccuWeather</h1>
 
-        <div class="searchbar flex-row-reverse xl:flex-row flex items-end xl:items-center gap-6">
+        <form class="searchbar flex-row-reverse xl:flex-row flex items-end xl:items-center gap-6">
 
             <div class="flex items-center gap-2">
                 <input type="text" name="search" id="search"
                     class="w-[13rem] xl:w-[27rem] focus:outline-none px-6 py-2 rounded-tl-xl rounded-bl-xl"
                     placeholder="Search for cities" autocomplete="off" value="PUNE">
-                <button class="bg-blue-600 px-4 py-2 rounded-tr-xl rounded-br-xl"
-                    onclick="API();TIME_API()">Search</button>
+                <button type="submit" class="bg-blue-600 px-4 py-2 rounded-tr-xl rounded-br-xl">Search</button>
             </div>
-            <i class='bx bx-sun text-3xl xl:mx-4 cursor-pointer' id="mode" onclick="toggleMode()"></i>
-        </div>
-    </div>
+            <!-- <i class='bx bx-sun text-3xl xl:mx-4 cursor-pointer' id="mode" onclick="toggleMode()"></i> -->
+        </form>
+    </nav>
 
     <div class="wait main-content flex-col xl:flex-row xl:gap-0 gap-20 flex items-center justify-around mt-12 xl:mt-24">
         <div class="main-left">
             <section class="flex items-center justify-center gap-24">
 
                 <div class="flex flex-col gap-12">
-                    <div class="text-4xl ubuntu" id="city"></div>
-                    <div id="temperature" class="text-4xl ubuntu"></div>
+                    <div class="text-4xl sora" id="city"></div>
+                    <div id="temperature" class="text-4xl sora"></div>
                 </div>
 
                 <div id="icon">
@@ -178,21 +54,21 @@
             </section>
         </div>
 
-        <div id="time-zone" class="ubuntu text-4xl flex items-center w-4/5 md:w-auto overflow-scroll justify-center">
+        <div id="time-zone" class="sora text-4xl flex items-center w-4/5 md:w-auto overflow-scroll justify-center">
         </div>
 
         <div class="main-right flex flex-col gap-8 xl:gap-4">
             <div class="flex items-end justify-center gap-4">
                 <div id="time" class="text-4xl"></div>
             </div>
-            <div id="day-date" class="ubuntu text-3xl text-center"></div>
+            <div id="day-date" class="sora text-3xl text-center"></div>
         </div>
     </div>
 
 
     <div class="wait details max-w-8xl mx-auto mt-20 xl:mt-8 xl:py-0 xl:py-12">
 
-        <h3 class="sm:hidden text-2xl flex items-center justify-center" onclick="show();upArrow()">Today's Forecast<i
+        <h3 class="sm:hidden text-2xl flex items-center justify-center cursor-pointer" onclick="show();upArrow()">Today's Forecast<i
                 class='bx bxs-down-arrow mx-2' id="ham"></i></h3>
 
 
@@ -269,7 +145,7 @@
             </div>
 
 
-            <h3 class="sm:hidden text-2xl flex items-center justify-center my-12 xl:my-0" onclick="show1();downArrow()">7-Days
+            <h3 class="sm:hidden text-2xl flex items-center justify-center my-12 xl:my-0 cursor-pointer" onclick="show1();downArrow()">7-Days
                 Overview<i class='bx bxs-down-arrow mx-2' id="ham1"></i></h3>
 
             <div

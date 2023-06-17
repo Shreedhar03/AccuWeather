@@ -1,3 +1,4 @@
+
 let darkMode = true
 
 let time = document.querySelector('#time')
@@ -5,16 +6,6 @@ let day = document.querySelector('#day-date')
 let am = document.querySelector('#unit')
 let search = document.querySelector("#search")
 let icon = document.querySelector('#icon')
-
-
-search.addEventListener("keydown", function (e) {
-    if (e.code === "Enter") {
-        API();
-        showTime();
-    }
-});
-
-
 let ham = document.querySelector('#ham')
 let ham1 = document.querySelector('#ham1')
 
@@ -101,49 +92,53 @@ const AQI = (LATITUDE, LONGITUDE) => {
             console.log(aqi, data)
             document.querySelector('#aqi-data').innerHTML = aqi
 
+            let apidDetails = document.querySelector('.aqi-details') ;
+            let rating = document.querySelector('.rating') ;
+            let inCircle = document.querySelector('.in-circle') ;
+
             switch (true) {
                 case (aqi <= 50): {
-                    document.querySelector('.aqi-details').innerHTML = aqiDesc[0];
-                    document.querySelector('.rating').innerHTML = "Good";
-                    document.querySelector('.in-circle').style.borderTop = "15px solid rgb(102, 238, 12)"
-                    document.querySelector('.in-circle').style.borderLeft = "15px solid rgb(102, 238, 12)"
-                    document.querySelector('.in-circle').style.borderRight = "15px solid rgb(102, 238, 12)"
-                    document.querySelector('.rating').style.color = "rgb(102, 238, 12)"
+                    apidDetails.innerHTML = aqiDesc[0];
+                    rating.innerHTML = "Good";
+                    inCircle.style.borderTop = "15px solid rgb(102, 238, 12)"
+                    inCircle.style.borderLeft = "15px solid rgb(102, 238, 12)"
+                    inCircle.style.borderRight = "15px solid rgb(102, 238, 12)"
+                    rating.style.color = "rgb(102, 238, 12)"
                     break;
                 }
                 case (aqi > 50 && aqi <= 100): {
-                    document.querySelector('.aqi-details').innerHTML = aqiDesc[1];
-                    document.querySelector('.rating').innerHTML = "Partially Good";
-                    document.querySelector('.in-circle').style.borderTop = "15px solid rgb(102, 238, 12)"
-                    document.querySelector('.in-circle').style.borderLeft = "15px solid rgb(102, 238, 12)"
-                    document.querySelector('.in-circle').style.borderRight = "15px solid rgb(102, 238, 12)"
-                    document.querySelector('.rating').style.color = "rgb(102, 238, 12)"
+                    apidDetails.innerHTML = aqiDesc[1];
+                    rating.innerHTML = "Partially Good";
+                    inCircle.style.borderTop = "15px solid rgb(102, 238, 12)"
+                    inCircle.style.borderLeft = "15px solid rgb(102, 238, 12)"
+                    inCircle.style.borderRight = "15px solid rgb(102, 238, 12)"
+                    rating.style.color = "rgb(102, 238, 12)"
                     break;
                 }
                 case (aqi > 100 && aqi <= 150): {
-                    document.querySelector('.aqi-details').innerHTML = aqiDesc[2];
-                    document.querySelector('.rating').innerHTML = "Moderate";
-                    document.querySelector('.in-circle').style.borderTop = "15px solid rgb(231, 122, 5)"
-                    document.querySelector('.in-circle').style.borderLeft = "15px solid rgb(231, 122, 5)"
-                    document.querySelector('.in-circle').style.borderRight = "15px solid rgb(231, 122, 5)"
-                    document.querySelector('.rating').style.color = "rgb(231, 122, 5)"
+                    apidDetails.innerHTML = aqiDesc[2];
+                    rating.innerHTML = "Moderate";
+                    inCircle.style.borderTop = "15px solid rgb(231, 122, 5)"
+                    inCircle.style.borderLeft = "15px solid rgb(231, 122, 5)"
+                    inCircle.style.borderRight = "15px solid rgb(231, 122, 5)"
+                    rating.style.color = "rgb(231, 122, 5)"
                     break;
                 }
                 case (aqi > 150 && aqi <= 200): {
-                    document.querySelector('.aqi-details').innerHTML = aqiDesc[3];
-                    document.querySelector('.rating').innerHTML = "Unhealthy";
-                    document.querySelector('.in-circle').style.borderTop = "15px solid rgb(231, 5, 5)"
-                    document.querySelector('.in-circle').style.borderLeft = "15px solid rgb(231, 5, 5)"
-                    document.querySelector('.in-circle').style.borderRight = "15px solid rgb(231, 5, 5)"
-                    document.querySelector('.rating').style.color = "rgb(231, 5, 5)"
+                    apidDetails.innerHTML = aqiDesc[3];
+                    rating.innerHTML = "Unhealthy";
+                    inCircle.style.borderTop = "15px solid rgb(231, 5, 5)"
+                    inCircle.style.borderLeft = "15px solid rgb(231, 5, 5)"
+                    inCircle.style.borderRight = "15px solid rgb(231, 5, 5)"
+                    rating.style.color = "rgb(231, 5, 5)"
                     break;
                 }
-                default: document.querySelector('.aqi-details').innerHTML = aqiDesc[4];
-                    document.querySelector('.rating').innerHTML = "Very unhealthy";
-                    document.querySelector('.in-circle').style.borderTop = "15px solid rgb(231, 5, 5)"
-                    document.querySelector('.in-circle').style.borderLeft = "15px solid rgb(231, 5, 5)"
-                    document.querySelector('.in-circle').style.borderRight = "15px solid rgb(231, 5, 5)"
-                    document.querySelector('.rating').style.color = "rgb(231, 5, 5)"
+                default: apidDetails.innerHTML = aqiDesc[4];
+                    rating.innerHTML = "Very unhealthy";
+                    inCircle.style.borderTop = "15px solid rgb(231, 5, 5)"
+                    inCircle.style.borderLeft = "15px solid rgb(231, 5, 5)"
+                    inCircle.style.borderRight = "15px solid rgb(231, 5, 5)"
+                    rating.style.color = "rgb(231, 5, 5)"
                     break;
             }
         })
@@ -251,69 +246,69 @@ const showData = (data) => {
 const borderMode = () => {
     document.querySelector('.circle').style.border = "5px solid rgb(12, 132, 238)";
 
-    (darkMode == true) ? document.querySelector('.circle').style.borderBottom = "5px solid rgb(0, 4, 32)" : document.querySelector('.circle').style.borderBottom = "5px solid white";
-    (darkMode == true) ? document.querySelector('.in-circle').style.borderBottom = "15px solid rgb(0, 4, 32)" : document.querySelector('.in-circle').style.borderBottom = "15px solid white";
+    document.querySelector('.circle').style.borderBottom = "5px solid rgba(0, 4, 32,0)"
+    document.querySelector('.in-circle').style.borderBottom = "15px solid rgba(0, 4, 32,0)"
 }
-
-const toggleMode = () => {
-
-    if (darkMode === true) {
-
-        darkMode = false
-    }
-    else {
-
-        darkMode = true
-    }
-
     borderMode();
 
+// const toggleMode = () => {
+
+//     if (darkMode === true) {
+
+//         darkMode = false
+//     }
+//     else {
+
+//         darkMode = true
+//     }
 
 
 
 
 
-    // API();
 
 
-    console.log(darkMode);
+//     // API();
 
-    document.body.classList.toggle('text-white')
-    document.body.classList.toggle('bgcolor')
-    let whiteborder = document.querySelector('.white-border')
-    let whiteborder1 = document.querySelector('.white-border1')
 
-    if (whiteborder.classList.contains('border-white')) {
-        whiteborder.classList.remove('border-white')
-        whiteborder.classList.add('border-black')
-    }
-    else {
-        whiteborder.classList.add('border-white')
-        whiteborder.classList.remove('border-black')
-    }
+//     console.log(darkMode);
 
-    if (whiteborder1.classList.contains('border-white')) {
-        whiteborder1.classList.remove('border-white')
-        whiteborder1.classList.add('border-black')
-    }
-    else {
-        whiteborder1.classList.add('border-white')
-        whiteborder1.classList.remove('border-black')
-    }
+//     document.body.classList.toggle('text-white')
+//     document.body.classList.toggle('bgcolor')
+//     let whiteborder = document.querySelector('.white-border')
+//     let whiteborder1 = document.querySelector('.white-border1')
 
-    let mode = document.querySelector('#mode')
+//     if (whiteborder.classList.contains('border-white')) {
+//         whiteborder.classList.remove('border-white')
+//         whiteborder.classList.add('border-black')
+//     }
+//     else {
+//         whiteborder.classList.add('border-white')
+//         whiteborder.classList.remove('border-black')
+//     }
 
-    if (mode.classList.contains('bx-sun')) {
-        mode.classList.remove('bx-sun')
-        mode.classList.add('bxs-moon')
-    }
-    else {
-        mode.classList.add('bx-sun')
-        mode.classList.remove('bxs-moon')
-    }
-}
+//     if (whiteborder1.classList.contains('border-white')) {
+//         whiteborder1.classList.remove('border-white')
+//         whiteborder1.classList.add('border-black')
+//     }
+//     else {
+//         whiteborder1.classList.add('border-white')
+//         whiteborder1.classList.remove('border-black')
+//     }
 
-toggleMode();
+//     let mode = document.querySelector('#mode')
+
+//     if (mode.classList.contains('bx-sun')) {
+//         mode.classList.remove('bx-sun')
+//         mode.classList.add('bxs-moon')
+//     }
+//     else {
+//         mode.classList.add('bx-sun')
+//         mode.classList.remove('bxs-moon')
+//     }
+// }
+
+// toggleMode();
 
 const showTime = (zone) => {
 
@@ -325,8 +320,8 @@ const showTime = (zone) => {
             .then((x) => x.json())
             .then((data1) => {
                 console.log(data1)
-                time.innerHTML = data1.time_12
-                day.innerHTML = data1.date
+                data1.time_12 ? time.innerHTML = data1.time_12 : " " ;
+                data1.date ? day.innerHTML = data1.date : " " ;
             })
     }
 
@@ -347,7 +342,11 @@ const loader = () => {
     }, 2500);
 }
 
+let form = document.querySelector("form")
 
-// setInterval(()=>{
-//     window.location.reload()
-// },1000)
+form.addEventListener("submit",(e)=>{
+    e.preventDefault();
+    API();
+    search.value="" ;
+    // TIME_API();
+})
