@@ -339,7 +339,7 @@ const loader = () => {
         document.querySelectorAll('.wait').forEach((element) => {
             element.style.opacity = "1"
         })
-    }, 2500);
+    }, 1000);
 }
 
 let form = document.querySelector("form")
