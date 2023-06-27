@@ -92,9 +92,9 @@ const AQI = (LATITUDE, LONGITUDE) => {
             console.log(aqi, data)
             document.querySelector('#aqi-data').innerHTML = aqi
 
-            let apidDetails = document.querySelector('.aqi-details') ;
-            let rating = document.querySelector('.rating') ;
-            let inCircle = document.querySelector('.in-circle') ;
+            let apidDetails = document.querySelector('.aqi-details');
+            let rating = document.querySelector('.rating');
+            let inCircle = document.querySelector('.in-circle');
 
             switch (true) {
                 case (aqi <= 50): {
@@ -103,7 +103,7 @@ const AQI = (LATITUDE, LONGITUDE) => {
                     inCircle.style.borderTop = "15px solid rgb(102, 238, 12)"
                     inCircle.style.borderLeft = "15px solid rgb(102, 238, 12)"
                     inCircle.style.borderRight = "15px solid rgb(102, 238, 12)"
-                    rating.style.color = "rgb(102, 238, 12)"
+                    rating.style.color = "black"
                     break;
                 }
                 case (aqi > 50 && aqi <= 100): {
@@ -112,7 +112,7 @@ const AQI = (LATITUDE, LONGITUDE) => {
                     inCircle.style.borderTop = "15px solid rgb(102, 238, 12)"
                     inCircle.style.borderLeft = "15px solid rgb(102, 238, 12)"
                     inCircle.style.borderRight = "15px solid rgb(102, 238, 12)"
-                    rating.style.color = "rgb(102, 238, 12)"
+                    rating.style.color = "black"
                     break;
                 }
                 case (aqi > 100 && aqi <= 150): {
@@ -121,7 +121,7 @@ const AQI = (LATITUDE, LONGITUDE) => {
                     inCircle.style.borderTop = "15px solid rgb(231, 122, 5)"
                     inCircle.style.borderLeft = "15px solid rgb(231, 122, 5)"
                     inCircle.style.borderRight = "15px solid rgb(231, 122, 5)"
-                    rating.style.color = "rgb(231, 122, 5)"
+                    rating.style.color = "black"
                     break;
                 }
                 case (aqi > 150 && aqi <= 200): {
@@ -130,7 +130,7 @@ const AQI = (LATITUDE, LONGITUDE) => {
                     inCircle.style.borderTop = "15px solid rgb(231, 5, 5)"
                     inCircle.style.borderLeft = "15px solid rgb(231, 5, 5)"
                     inCircle.style.borderRight = "15px solid rgb(231, 5, 5)"
-                    rating.style.color = "rgb(231, 5, 5)"
+                    rating.style.color = "black"
                     break;
                 }
                 default: apidDetails.innerHTML = aqiDesc[4];
@@ -138,7 +138,7 @@ const AQI = (LATITUDE, LONGITUDE) => {
                     inCircle.style.borderTop = "15px solid rgb(231, 5, 5)"
                     inCircle.style.borderLeft = "15px solid rgb(231, 5, 5)"
                     inCircle.style.borderRight = "15px solid rgb(231, 5, 5)"
-                    rating.style.color = "rgb(231, 5, 5)"
+                    rating.style.color = "black"
                     break;
             }
         })
@@ -160,7 +160,7 @@ const showData = (data) => {
     var_windspeed.innerHTML = windspeed + " m/s";
     var_visibility.innerHTML = visibility + " m";
     var_city.innerHTML = String(resolvedAddress[0].toUpperCase() + resolvedAddress.slice(1))
-    temperature.innerHTML = `${Math.round(((temp - 32) * (5 / 9)) * 100) / 100}<sup>o</sup>C`
+    temperature.innerHTML = `${Math.round(((temp - 32) * (5 / 9)) * 100) / 100}<sup class="text-black">o</sup>C`
 
     var_description.innerHTML = descrip
 
@@ -176,13 +176,22 @@ const showData = (data) => {
         icon.innerHTML =
             `
             <i class='bx bx-cloud text-7xl md:text-9xl text-blue-400'></i>
-            `
+            ` ;
+
     }
     else if (conditions === "Rain") {
         icon.innerHTML =
             `
             <i class='bx bx-cloud-drizzle text-7xl md:text-9xl text-blue-400'></i>
-        `
+            `
+    }
+
+    if ((Math.round(((temp - 32) * (5 / 9)) * 100) / 100) <= 25) {
+        if(!document.body.classList.contains("cloudy"))
+        document.body.classList.add("cloudy");
+    }
+    else{
+        document.body.classList.remove("cloudy");
     }
 
 
@@ -249,7 +258,7 @@ const borderMode = () => {
     document.querySelector('.circle').style.borderBottom = "5px solid rgba(0, 4, 32,0)"
     document.querySelector('.in-circle').style.borderBottom = "15px solid rgba(0, 4, 32,0)"
 }
-    borderMode();
+borderMode();
 
 // const toggleMode = () => {
 
@@ -320,8 +329,8 @@ const showTime = (zone) => {
             .then((x) => x.json())
             .then((data1) => {
                 console.log(data1)
-                data1.time_12 ? time.innerHTML = data1.time_12 : " " ;
-                data1.date ? day.innerHTML = data1.date : " " ;
+                data1.time_12 ? time.innerHTML = data1.time_12 : " ";
+                data1.date ? day.innerHTML = data1.date : " ";
             })
     }
 
@@ -344,9 +353,9 @@ const loader = () => {
 
 let form = document.querySelector("form")
 
-form.addEventListener("submit",(e)=>{
+form.addEventListener("submit", (e) => {
     e.preventDefault();
     API();
-    search.value="" ;
+    search.value = "";
     // TIME_API();
 })

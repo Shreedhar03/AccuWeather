@@ -1,12 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Arvo&family=DM+Sans&family=Fira+Code&family=Marvel:wght@400;700&family=Montserrat&family=Noto+Serif&family=Open+Sans&family=Plus+Jakarta+Sans&family=Poppins&family=Sacramento&family=Sora&family=sora&display=swap');
 
 * {
-    font-family: 'open sans';
-    color: #e2e0e0;
+    font-family: 'poppins';
+    color: rgb(44, 37, 37);
     margin: 0;
     padding: 0;
 }
-
+:root{
+    --temp: rgb(246,235,38) ;
+    --temp1: rgba(246,235,38,1) 0% ;
+    --temp2: rgba(255,254,183,1) 100% ;
+}
+body.cloudy{
+    --temp: rgb(38,246,204);
+    --temp1: rgba(38,246,204,1) 0%;
+    --temp2: rgba(255,254,183,1) 100%; 
+   
+}
 .sora {
     font-family: 'sora';
 }
@@ -18,16 +28,27 @@
 .bgcolor {
     background-color: white;
 }
-
+input::-webkit-input-placeholder{
+    color: black!important;
+}
+input::-webkit-input-placeholder{
+    color: black!important;
+}
+/* 
 body {
     background-color: rgb(0, 4, 32);
     background:rgba(0, 0, 0, 0.4) url('./pexels-luiz-carlos-reis-e-silva-4054951.jpg');
     background-size: cover;
-    /* box-shadow:inset 0 0 0 1000px rgba(0,0,0,.5); */
     background-blend-mode: darken;
     background-attachment: fixed;
     background-position:bottom;
-    /* height: 100vh; */
+} */
+
+body {
+    background: var(--temp);
+    background: linear-gradient(0deg, var(--temp1) , var(--temp2)); 
+    background-attachment: fixed;
+    transition: all 0.5s ease;
 }
 
 .logo {
@@ -37,8 +58,8 @@ body {
 input[type=text],
 .items,
 .day-7 {
-    background-color: #49440770;
-    color: #e2e0e0;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: black;
     backdrop-filter: blur(20px);
 }
 
