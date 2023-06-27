@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AccuWeather</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <!-- <link rel="icon" href="https://img.freepik.com/free-icon/sun-hidden-by-clouds_318-83627.jpg?size=338&ext=jpg&ga=GA1.1.397493846.1668271889&semt=ais" type="image/icon type"> -->
+    <link rel="icon" href="./weather.svg" type="image/icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -25,7 +25,10 @@
 
     <nav class="wait nav flex-col xl:flex-row flex m-10 gap-12 items-center">
 
-        <h1 class="text-5xl xl:text-3xl logo text-black">AccuWeather</h1>
+        <h1 class="text-5xl xl:text-3xl logo text-black flex items-center gap-2">
+            <img src="./weather.svg" class="w-12" alt="">
+            AccuWeather
+        </h1>
 
         <form class="searchbar flex-row-reverse xl:flex-row flex items-end xl:items-center gap-6">
 
