@@ -160,7 +160,7 @@ const showData = (data) => {
     var_windspeed.innerHTML = windspeed + " m/s";
     var_visibility.innerHTML = visibility + " m";
     var_city.innerHTML = String(resolvedAddress[0].toUpperCase() + resolvedAddress.slice(1))
-    temperature.innerHTML = `${Math.round(((temp - 32) * (5 / 9)) * 100) / 100}<sup class="text-black">o</sup>C`
+    temperature.innerHTML = `${Math.round(((temp - 32) * (5 / 9)) * 100) / 100}<span class="text-2xl"><sup class="text-black">o</sup>C</span>`
 
     var_description.innerHTML = descrip
 
