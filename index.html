@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <nav class="wait nav flex-col xl:flex-row flex m-10 gap-12 items-center">
+    <nav class="wait sticky top-0 bg-white nav px-4 sm:px-24 flex-col xl:flex-row flex px-10 py-6 z-30 gap-12 items-center">
 
         <h1 class="text-5xl xl:text-3xl logo text-black flex items-center gap-2">
             <img src="./weather.svg" class="w-12" alt="">
@@ -34,56 +34,58 @@
 
             <div class="flex items-center gap-2">
                 <input type="text" name="search" id="search"
-                    class="w-[13rem] xl:w-[27rem] focus:outline-none px-6 py-2 rounded-tl-xl rounded-bl-xl"
+                    class="w-[13rem] xl:w-[27rem] focus:outline-none px-6 py-2 rounded-tl-xl rounded-bl-xl placeholder:text-black"
                     placeholder="Search for cities" autocomplete="off" value="PUNE">
-                <button type="submit" class="bg-[#322f2c] text-white px-4 py-2 rounded-tr-xl rounded-br-xl">Search</button>
+                <button type="submit"
+                    class="bg-[#322f2c] text-white px-4 py-2 rounded-tr-xl rounded-br-xl">Search</button>
             </div>
             <!-- <i class='bx bx-sun text-3xl xl:mx-4 cursor-pointer' id="mode" onclick="toggleMode()"></i> -->
         </form>
     </nav>
 
-    <div class="wait main-content flex-col xl:flex-row xl:gap-0 gap-20 flex items-center justify-around mt-12 xl:mt-24">
+    <div class="wait main-content mx-4 sm:mx-24 my-6 sm:my-8 rounded-[50px] flex-col items-center md:items-start md:flex-row xl:gap-0 gap-6 md:gap-20 flex items-start justify-around p-12 sm:py-36">
         <div class="main-left">
             <section class="flex items-center justify-center gap-24">
 
                 <div class="flex flex-col gap-4">
-                    <div id="temperature" class="text-5xl sora text-black flex gap-2"></div>
-                    <div class="text-4xl sora text-black" id="city"></div>
+                    <div id="temperature" class="text-5xl sora text-slate-100 flex gap-2"></div>
+                    <div class="text-4xl sora text-slate-100" id="city"></div>
                 </div>
 
-                <div id="icon">
+                <div id="icon" class="hidden">
                 </div>
             </section>
         </div>
 
-        <div id="time-zone" class="sora text-4xl flex items-center w-4/5 md:w-auto overflow-scroll justify-center text-black">
+        <div id="time-zone"
+            class="sora text-4xl flex items-center md:w-auto overflow-scroll justify-center text-slate-100">
         </div>
 
-        <div class="main-right flex flex-col gap-8 xl:gap-4">
+        <div class="main-right flex flex-col gap-2 md:gap-4">
             <div class="flex items-end justify-center gap-4">
-                <div id="time" class="text-4xl text-black"></div>
+                <div id="time" class="text-4xl text-slate-100"></div>
             </div>
-            <div id="day-date" class="sora text-xl text-center text-black"></div>
+            <div id="day-date" class="sora text-xl text-center text-slate-100"></div>
         </div>
     </div>
 
 
-    <div class="wait details max-w-8xl mx-auto mt-20 xl:mt-8 xl:py-0 xl:py-12">
+    <div class="wait details max-w-8xl mt-6 sm:mt-0 mx-auto bg-zinc-100 py-8 xl:py-0 xl:py-12">
 
-        <h3 class="sm:hidden text-2xl flex items-center justify-center cursor-pointer font-bold" onclick="show();upArrow()">Today's Forecast<i
-                class='bx bxs-down-arrow mx-2' id="ham"></i></h3>
+        <h3 class="sm:hidden text-2xl flex items-center justify-center cursor-pointer font-bold"
+            onclick="show();upArrow()">Today's Forecast<i class='bx bxs-down-arrow mx-2' id="ham"></i></h3>
 
 
-        <div class="flex-col xl:flex-row flex 3xl:items-start w-full justify-center gap-12">
-
+        <section class="flex-col xl:flex-row flex w-full justify-center gap-12">
+            <!-- left-details -->
             <div
-                class="xl:w-8/12 flex-col flex gap-16 items-start rounded-2xl px-4 py-8 xl:py-16 xl:my-12 justify-center overview hide white-border">
+                class="xl:w-8/12 flex-col flex gap-16 items-start rounded-2xl px-4 py-8 justify-center overview hide white-border">
 
                 <div class="justify-center items-start xl:flex-row flex flex-wrap gap-10 m-0">
 
 
                     <div
-                        class="flex items-center items px-8 py-4 gap-6 rounded-xl w-11/12 xl:h-[8rem] xl:m-auto xl:w-[45%]">
+                        class="flex items-center items px-8 bg-slate-100 py-4 gap-6 rounded-2xl shadow-md shadow-gray-500 w-11/12 xl:h-[8rem] xl:m-auto xl:w-[45%]">
                         <i class='bx bxs-thermometer text-4xl'></i>
                         <div class="flex flex-col text-2xl gap-3">
                             <p class="font-bold">Temperature</p>
@@ -92,7 +94,7 @@
                     </div>
 
                     <div
-                        class="flex items-center items px-8 py-4 gap-6 rounded-xl w-11/12 xl:h-[8rem] xl:m-auto xl:w-[45%]">
+                        class="flex items-center items px-8 bg-slate-100 py-4 gap-6 rounded-2xl shadow-md shadow-gray-500 w-11/12 xl:h-[8rem] xl:m-auto xl:w-[45%]">
                         <i class='bx bxs-droplet-half text-4xl'></i>
                         <div class="flex flex-col text-2xl gap-3">
                             <p class="font-bold">Humidity</p>
@@ -101,7 +103,7 @@
                     </div>
 
                     <div
-                        class="flex items-center items px-8 py-4 gap-6 rounded-xl w-11/12 xl:h-[8rem] xl:m-auto xl:w-[45%]">
+                        class="flex items-center items px-8 bg-slate-100 py-4 gap-6 rounded-2xl shadow-md shadow-gray-500 w-11/12 xl:h-[8rem] xl:m-auto xl:w-[45%]">
                         <i class='bx bx-wind text-4xl'></i>
                         <div class="flex flex-col text-2xl gap-3">
                             <p class="font-bold">Wind Speed</p>
@@ -110,7 +112,7 @@
                     </div>
 
                     <div
-                        class="flex items-center items px-8 py-4 gap-6 rounded-xl w-11/12 xl:h-[8rem] xl:m-auto xl:w-[45%]">
+                        class="flex items-center items px-8 bg-slate-100 py-4 gap-6 rounded-2xl shadow-md shadow-gray-500 w-11/12 xl:h-[8rem] xl:m-auto xl:w-[45%]">
                         <i class='bx bx-tachometer text-4xl'></i>
                         <div class="flex flex-col text-2xl gap-3">
                             <p class="font-bold">Pressure</p>
@@ -119,7 +121,7 @@
                     </div>
 
                     <div
-                        class="flex items-center items px-8 py-4 gap-6 rounded-xl w-11/12 xl:h-[8rem] xl:m-auto xl:w-[45%]">
+                        class="flex items-center items px-8 bg-slate-100 py-4 gap-6 rounded-2xl shadow-md shadow-gray-500 w-11/12 xl:h-[8rem] xl:m-auto xl:w-[45%]">
                         <i class='bx bx-droplet text-4xl'></i>
                         <div class="flex flex-col text-2xl gap-3">
                             <p class="font-bold">Dew</p>
@@ -128,7 +130,7 @@
                     </div>
 
                     <div
-                        class="flex items-center items px-8 py-4 gap-6 rounded-xl w-11/12 xl:h-[8rem] xl:m-auto xl:w-[45%]">
+                        class="flex items-center items px-8 bg-slate-100 py-4 gap-6 rounded-2xl shadow-md shadow-gray-500 w-11/12 xl:h-[8rem] xl:m-auto xl:w-[45%]">
                         <i class='bx bx-low-vision text-4xl'></i>
                         <div class="flex flex-col text-2xl gap-3">
                             <p class="font-bold">Visibility</p>
@@ -147,11 +149,12 @@
             </div>
 
 
-            <h3 class="sm:hidden text-2xl flex items-center justify-center my-12 xl:my-0 cursor-pointer font-bold" onclick="show1();downArrow()">7-Days
+            <h3 class="sm:hidden text-2xl flex items-center justify-center my-12 xl:my-0 cursor-pointer font-bold"
+                onclick="show1();downArrow()">7-Days
                 Overview<i class='bx bxs-down-arrow mx-2' id="ham1"></i></h3>
-
+            <!-- 7-days-details -->
             <div
-                class="day-7 hide w-11/12 mx-auto mb-12 xl:mb-0 xl:my-8 xl:my-0 xl:w-3/12 rounded rounded-2xl px-5 shrink-0 flex flex-col items-center justify-center gap-16 white-border1 py-10 xl:py-0">
+                class="day-7 bg-slate-100 shadow-md shadow-gray-500 hide w-11/12 mx-auto mb-12 xl:mb-0 xl:my-8 xl:my-0 xl:w-3/12 rounded rounded-2xl px-5 shrink-0 flex flex-col items-center justify-center gap-16 white-border1 py-10 xl:py-0">
 
                 <div class="flex justify-center items-center gap-1">
                     <p class="text-3xl font-bold">Weekly Temperature</p>
@@ -192,7 +195,7 @@
 
             </div>
 
-        </div>
+        </section>
 
     </div>
 
@@ -201,7 +204,8 @@
 
         <div class="py-12 lg:flex-row flex-col flex items-center justify-center gap-24">
             <div class="circle h-[290px] w-[290px] flex flex-col items-center justify-center rounded-full">
-                <div class="in-circle h-[250px] w-[250px] flex gap-3 flex-col items-center justify-center rounded-full p-12">
+                <div
+                    class="in-circle h-[250px] w-[250px] flex gap-3 flex-col items-center justify-center rounded-full p-12">
                     <p class="rating text-3xl text-center break-normal text-black"></p>
                     <p class="aqi text-2xl text-center"><span id="aqi-data"></span> &mu;g/m<sup>3</sup></p>
                 </div>
@@ -211,8 +215,9 @@
         </div>
     </div>
 
-    <footer class="wait mx-4 xl:mx-0 text-center py-6 flex justify-center">Copyright &copy 2022-23 AccuWeather.in | All
-        Rights Reserved</footer>
+    <footer class="wait mx-4 xl:mx-0 text-center py-6 flex justify-center">Made with 💓 by <a
+            href="https://shreedhar-bio.web.app" target="_blank" class="ml-1 underline underline-offset-2"> Shreedhar
+            Urawane</a></footer>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="script.js"></script>
 </body>

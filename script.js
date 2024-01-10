@@ -88,9 +88,10 @@ const AQI = (LATITUDE, LONGITUDE) => {
     fetch(`https://api.airvisual.com/v2/nearest_city?lat=${LATITUDE}&lon=${LONGITUDE}&key=38df2a01-c313-4b69-8688-6d46283a5130`)
         .then((res) => res.json())
         .then((data) => {
-            let aqi = data.data.current.pollution.aqius
+            let aqi = data?.data?.current?.pollution.aqius
             console.log(aqi, data)
             document.querySelector('#aqi-data').innerHTML = aqi
+
 
             let apidDetails = document.querySelector('.aqi-details');
             let rating = document.querySelector('.rating');
@@ -160,9 +161,16 @@ const showData = (data) => {
     var_windspeed.innerHTML = windspeed + " m/s";
     var_visibility.innerHTML = visibility + " m";
     var_city.innerHTML = String(resolvedAddress[0].toUpperCase() + resolvedAddress.slice(1))
-    temperature.innerHTML = `${Math.round(((temp - 32) * (5 / 9)) * 100) / 100}<span class="text-2xl"><sup class="text-black">o</sup>C</span>`
+    temperature.innerHTML = `${Math.round(((temp - 32) * (5 / 9)) * 100) / 100}<span class="text-2xl text-slate-100"><sup class="text-slate-100">o</sup>C</span>`
 
     var_description.innerHTML = descrip
+    let newTemp = Math.round(((temp - 32) * (5 / 9)) * 100) / 100
+    if (newTemp < 20) {
+        document.querySelector('.main-content').style.background = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('main2.jpg') center/cover";
+    } else {
+        document.querySelector('.main-content').style.background = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('main1.jpg') center/cover";
+    }
+    
 
     if (conditions === "Clear") {
 
@@ -187,10 +195,10 @@ const showData = (data) => {
     }
 
     if ((Math.round(((temp - 32) * (5 / 9)) * 100) / 100) <= 25) {
-        if(!document.body.classList.contains("cloudy"))
-        document.body.classList.add("cloudy");
+        if (!document.body.classList.contains("cloudy"))
+            document.body.classList.add("cloudy");
     }
-    else{
+    else {
         document.body.classList.remove("cloudy");
     }
 
